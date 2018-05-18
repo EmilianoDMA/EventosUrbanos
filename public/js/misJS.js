@@ -1,7 +1,7 @@
            document.getElementById('id01').style.display='block';
-            var Nombre = "Anonimo";
-            var Apellido = "Anonimo";
-            var DNI = "Anonimo";
+            var Nombre = "Anónimo";
+            var Apellido = "Anónimo";
+            var DNI = "Anónimo";
             var latitud;
             var longitud;
             var descripcion = "Ninguna";
@@ -549,12 +549,12 @@
 
             filtrobtn.onclick = function() {
                 console.log("click en filtrar");
-                var tipo = document.getElementById('tipoF').value
-                var fechaDesde = document.getElementById('fechaDF').value
-                var fechaHasta = document.getElementById('fechaHF').value
-                var dni = document.getElementById('dniF').value
-                var nombre = document.getElementById('nombreF').value
-                var apellido = document.getElementById('apellidoF').value
+                var tipo = document.getElementById('tipoF').value;
+                var fechaDesde = document.getElementById('fechaDF').value;
+                var fechaHasta = document.getElementById('fechaHF').value;
+                var dni = document.getElementById('dniF').value;
+                var nombre = document.getElementById('nombreF').value;
+                var apellido = document.getElementById('apellidoF').value;
 
                 $.ajaxSetup({
                     headers: {

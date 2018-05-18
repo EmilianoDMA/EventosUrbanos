@@ -38,7 +38,7 @@
                         <label><b>Apellido</b></label>
                         <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Anónimo" id="apellido">
                         <label><b>DNI</b></label>
-                        <input class="w3-input w3-border" type="text" placeholder="Anónimo" id="dni">
+                        <input class="w3-input w3-border" type="number" placeholder="Anónimo" id="dni">
                         <button class="w3-button w3-block w3-green w3-section w3-padding" id="AccederInicial" onclick="acceder()">Acceder</button>
                         </div>
                     </div>
@@ -77,8 +77,7 @@
                 <span class="closeD">&times;</span>
                 <h2>Describanos que sucede:</h2>
                 <div class="grid-container">
-                    <textarea rows="4" cols="50" id="detalleInput">
-                    </textarea><br>
+                    <textarea rows="4" cols="50" id="detalleInput"></textarea><br>
                     <button id="detallebtn" onclick="registrarDetalle(this)">Registrar</button>
                 </div>
             </div>
@@ -104,8 +103,8 @@
                     Fecha Desde <input type="date" data-date-inline-picker="true" id="fechaDF"/>
                     Fecha Hasta <input type="date" data-date-inline-picker="true" id="fechaHF"/>
                     Hora Desde <input type="text" id="horaDF">
-                    Hora Hasta <input type="text" id="horaHF">
-                    DNI <input type="text" id="dniF">
+                    Hora Hasta <input type="text" id="horaHF"><br>
+                    DNI <input type="number" id="dniF">
                     Nombre <input type="text" id="nombreF">
                     Apellido <input type="text" id="apellidoF"> 
                     <button id="filtrobtn"> Filtrar </button> <br>

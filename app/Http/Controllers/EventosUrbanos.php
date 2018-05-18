@@ -31,12 +31,35 @@ class EventosUrbanos extends Controller
         $nombre = $request->input('nombre');
         $apellido = $request->input('apellido');
         $dni = $request->input('dni');
-        
-        $result = Evento::where('tipoEvento', 'LIKE', '%'.$tipo.'%')
-                            ->where('nombreUsuaro', 'LIKE', '%'.$nombre.'%')
-                            ->where('apellidoUsuario', 'LIKE', '%'.$apellido.'%')
-                            ->where('dniUsuario', 'LIKE', '%'.$dni.'%')->get();
+/*
+        $diaDesde = explode("-", $fechaDesde)[0];
+        $mesDesde = explode("-", $fechaDesde)[1];
+        $anioDesde = explode("-", $fechaDesde)[2];
 
+        $diaHasta = explode("-", $fechaHasta)[0];
+        $mesHasta = explode("-", $fechaHasta)[1];
+        $anioHasta = explode("-", $fechaHasta)[2];
+*/        
+        $fechaFromateadaDesde = $fechaDesde." 00:00:00"; 
+        $fechaFromateadaHasta = $fechaHasta." 23:59:59"; 
+
+        if($fechaDesde != "" and $fechaHasta != ""){
+            $result = Evento::where('tipoEvento', 'LIKE', '%'.$tipo.'%')
+                                ->where('nombreUsuaro', 'LIKE', '%'.$nombre.'%')
+                                ->where('apellidoUsuario', 'LIKE', '%'.$apellido.'%')
+                                ->where('dniUsuario', 'LIKE', '%'.$dni.'%')
+                                ->whereDate('created_at', '>=',$fechaFromateadaDesde)
+                                ->whereDate('created_at', '<=',$fechaFromateadaHasta)
+//                                ->whereBetween('created_at', array("2018-05-17 00:00:00", "2018-06-17 00:00:00"))
+                                ->get();
+        }else{
+            $result = Evento::where('tipoEvento', 'LIKE', '%'.$tipo.'%')
+            ->where('nombreUsuaro', 'LIKE', '%'.$nombre.'%')
+            ->where('apellidoUsuario', 'LIKE', '%'.$apellido.'%')
+            ->where('dniUsuario', 'LIKE', '%'.$dni.'%')
+            ->get();
+        }
+        
         return $result;
 
     }
