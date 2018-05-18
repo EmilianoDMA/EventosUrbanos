@@ -88,14 +88,26 @@
             <div class="modal-contentL">
             <span class="closeL">&times;</span>
                     <h1>Eventos Registrados</h1>
-                    Tipo <input type="text" id="tipoF">
+                    Tipo 
+                    <select name="cars" id="tipoF">
+                        <option value=""></option>
+                        <option value="Robo">Robo</option>
+                        <option value="Fuego">Fuego</option>
+                        <option value="Choque-Accidente">Choque/Accidente</option>
+                        <option value="Animales-Sueltos">Animales Sueltos</option>
+                        <option value="Pelea-Callejera">Pelea Callejera</option>
+                        <option value="Inundacion">Inundación</option>
+                        <option value="Bache">Bache</option>
+                        <option value="Bandalismo">Bandalismo</option>
+                        <option value="Otro">Otro</option>
+                    </select>
                     Fecha Desde <input type="date" data-date-inline-picker="true" id="fechaDF"/>
                     Fecha Hasta <input type="date" data-date-inline-picker="true" id="fechaHF"/>
                     Hora Desde <input type="text" id="horaDF">
                     Hora Hasta <input type="text" id="horaHF">
-                    DNI denunciante <input type="text" id="dniF">
-                    Nombre denunciante <input type="text" id="nombreF">
-                    Apellido denunciante <input type="text" id="apellidoF"> 
+                    DNI <input type="text" id="dniF">
+                    Nombre <input type="text" id="nombreF">
+                    Apellido <input type="text" id="apellidoF"> 
                     <button id="filtrobtn"> Filtrar </button> <br>
                     <div class="listadoEventos" id="listadoEventos"></div>
             </div>

@@ -25,11 +25,23 @@ class EventosUrbanos extends Controller
 
     public function filtrar(Request $request)
     {  
-        return Evento::All();
+        $tipo = $request->input('tipo');
+        $fechaDesde = $request->input('fechaDesde');
+        $fechaHasta = $request->input('fechaHasta');
+        $nombre = $request->input('nombre');
+        $apellido = $request->input('apellido');
+        $dni = $request->input('dni');
+        
+        $result = Evento::where('tipoEvento', 'LIKE', '%'.$tipo.'%')
+                            ->where('nombreUsuaro', 'LIKE', '%'.$nombre.'%')
+                            ->where('apellidoUsuario', 'LIKE', '%'.$apellido.'%')
+                            ->where('dniUsuario', 'LIKE', '%'.$dni.'%')->get();
+
+        return $result;
 
     }
 
-    public function eliminar(Request $request)
+    public function eliminarEvento(Request $request)
     {  
         Evento::find($request->input('id'))->delete();
     }

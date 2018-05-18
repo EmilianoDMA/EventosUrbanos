@@ -40,6 +40,8 @@ Route::get('/', function(){
 });
 
 Route::post('guardar', 'EventosUrbanos@save_data');
+Route::post('eliminarE', 'EventosUrbanos@eliminarEvento');
+
 Route::get('cargarMarkers', function(){
     if(Request::ajax()){
         return Evento::All();
@@ -48,7 +50,6 @@ Route::get('cargarMarkers', function(){
 
 Route::post('filtrar', 'EventosUrbanos@filtrar');
 
-Route::post('eliminar', 'EventosUrbanos@eliminar');
 
 //$app->post('/e', 'GuardarEvento@save_data');
 
