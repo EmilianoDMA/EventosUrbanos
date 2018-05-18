@@ -10,23 +10,56 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use laravelApp\Evento;
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/test', function(){
+    return view('mapa');
+ });
+
+ Route::get('blade', function () {
+    return view('child');
 });
 
-// Second Route method – Root URL with ID will match this method
-Route::get('/ID/{id}',function($id){
-    echo 'ID: '.$id;
- });
- 
- // Third Route method – Root URL with or without name will match this method
- Route::get('/user/{name?}',function($name = 'Virat Gandhi'){
-    echo "Name: ".$name;
- });
+Route::get('/map', 'MapController@index');
 
- Route::get('/test', function(){
-    return view('test');
- });
+Route::get('/', function(){
+    $config['center'] = 'Trelew, Arg';
+    $config['zoom'] = '14';
+    $config['map_height'] = '500px';
+    $config['scrollwheel'] = true;
 
- Route::get('/gmaps', ['as ' => 'gmaps', 'uses' => 'GmapsController@index']);
+    GMaps::initialize($config);
+
+    $map = GMaps::create_map();
+
+    $marker['position'] = "Trelew";
+    GMaps::add_marker($marker);
+
+    return view('welcome')->with ('map', $map);
+});
+
+Route::post('guardar', 'EventosUrbanos@save_data');
+Route::get('cargarMarkers', function(){
+    if(Request::ajax()){
+        return Evento::All();
+    }
+});
+
+Route::post('filtrar', 'EventosUrbanos@filtrar');
+
+Route::post('eliminar', 'EventosUrbanos@eliminar');
+
+//$app->post('/e', 'GuardarEvento@save_data');
+
+/*
+Route::get('/', function(){
+    $config = array();
+    $config['center'] = 'New York, USA';
+    GMaps::initialize($config);
+    $map = GMaps::create_map();
+
+    echo $map['js'];
+    echo $map['html'];
+});
+*/
