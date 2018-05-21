@@ -48,6 +48,10 @@ Route::get('cargarMarkers', function(){
     }
 });
 
+Route::get('logout', function(){
+    Auth::logout();
+});
+
 Route::post('filtrar', 'EventosUrbanos@filtrar');
 
 
@@ -64,3 +68,7 @@ Route::get('/', function(){
     echo $map['html'];
 });
 */
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -91,7 +91,6 @@ tr:nth-child(even) {
     border: 1px solid #888;
     width: auto; /* Could be more or less, depending on screen size */
     animation:animatezoom 0.6s}@keyframes animatezoom{from{transform:scale(0)} to{transform:scale(1)};
-
 }
 
 /* Modal Content/Box */
@@ -153,4 +152,27 @@ tr:nth-child(even) {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+#tablaListado {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tablaListado td, #tablaListado th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#tablaListado tr:nth-child(even){background-color: #f2f2f2;}
+
+#tablaListado tr:hover {background-color: #ddd;}
+
+#tablaListado th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
 }

@@ -39,8 +39,8 @@
                     console.log("entro a abrir")
                     modal.style.display = "block";
                 }
-                
-                function SalirControl(controlDiv, map) {
+
+                function LoginControl(controlDiv, map) {
 
                     // Set CSS for the control border.
                     var controlUI = document.createElement('div');
@@ -51,7 +51,7 @@
                     controlUI.style.cursor = 'pointer';
                     controlUI.style.marginBottom = '22px';
                     controlUI.style.textAlign = 'center';
-                    controlUI.title = 'Salir';
+                    controlUI.title = 'Iniciar Sesión';
                     
                     controlDiv.appendChild(controlUI);
 
@@ -63,17 +63,16 @@
                     controlText.style.lineHeight = '38px';
                     controlText.style.paddingLeft = '5px';
                     controlText.style.paddingRight = '5px';
-                    controlText.innerHTML = '<div class="SalirBtn">Salir</div>';
+                    controlText.innerHTML = '<div class="IniciarSesionBtn">Iniciar Sesión</div>';
                     controlUI.appendChild(controlText);
 
                     controlUI.addEventListener('click', function() {  
                         $.get('logout', function(data){
-                            window.location.href = 'http://127.0.0.1:8000/'; 
+                            window.location.href = 'http://127.0.0.1:8000/login'; 
                         });
                     });
                 }
-
-
+                
                 //Boton en mapa
                 function CenterControl(controlDiv, map) {
 
@@ -125,9 +124,7 @@
                             $('#listadoEventos').append($("</th>"));
                             $('#listadoEventos').append($('<th>').html("Apellido denunciante"));                        
                             $('#listadoEventos').append($("</th>"));
-                            $('#listadoEventos').append($('<th>').html("DNI denunciante"));                        
-                            $('#listadoEventos').append($("</th>"));
-                            $('#listadoEventos').append($('<th>').html("Eliminar"));                        
+                            $('#listadoEventos').append($('<th>').html("DNI denunciante"));                                             
                             $('#listadoEventos').append($("</th>"));
                             $('#listadoEventos').append($("</tr>"));
         
@@ -148,8 +145,6 @@
                                 $('#listadoEventos').append($('<th>').html(d.apellidoUsuario));                        
                                 $('#listadoEventos').append($("</th>"));
                                 $('#listadoEventos').append($('<th>').html(d.dniUsuario));                        
-                                $('#listadoEventos').append($("</th>"));
-                                $('#listadoEventos').append($('<th>').append("<button>X").attr("onclick","eliminar(this)").attr("id",d.id));                        
                                 $('#listadoEventos').append($("</th>"));
                                 $('#listadoEventos').append($("</tr>"));
                                 latitudlongitud = {lat: d.latitud, lng: d.longitud};
@@ -184,11 +179,11 @@
                 centerControlDiv.index = 1;
                 map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
 
-                var salirDiv = document.createElement('div');
-                var salirControl = new SalirControl(salirDiv, map);
+                var loginDiv = document.createElement('div');
+                var login = new LoginControl(loginDiv, map);
 
-                salirDiv.index = 1;
-                map.controls[google.maps.ControlPosition.TOP_CENTER].push(salirDiv);
+                loginDiv.index = 1;
+                map.controls[google.maps.ControlPosition.TOP_CENTER].push(loginDiv);
             //--------
                 
                 $.get('cargarMarkers', function(data){
@@ -213,9 +208,7 @@
                     $('#listadoEventos').append($("</th>"));
                     $('#listadoEventos').append($('<th>').html("Apellido denunciante"));                        
                     $('#listadoEventos').append($("</th>"));
-                    $('#listadoEventos').append($('<th>').html("DNI denunciante"));                        
-                    $('#listadoEventos').append($("</th>"));
-                    $('#listadoEventos').append($('<th>').html("Eliminar"));                        
+                    $('#listadoEventos').append($('<th>').html("DNI denunciante"));                                               
                     $('#listadoEventos').append($("</th>"));
                     $('#listadoEventos').append($("</tr>"));
 
@@ -236,8 +229,6 @@
                         $('#listadoEventos').append($('<th>').html(d.apellidoUsuario));                        
                         $('#listadoEventos').append($("</th>"));
                         $('#listadoEventos').append($('<th>').html(d.dniUsuario));                        
-                        $('#listadoEventos').append($("</th>"));
-                        $('#listadoEventos').append($('<th>').append("<button>X").attr("onclick","eliminar(this)").attr("id",d.id));                        
                         $('#listadoEventos').append($("</th>"));
                         $('#listadoEventos').append($("</tr>"));
                         latitudlongitud = {lat: d.latitud, lng: d.longitud};
@@ -336,9 +327,7 @@
                             $('#listadoEventos').append($("</th>"));
                             $('#listadoEventos').append($('<th>').html("Apellido denunciante"));                        
                             $('#listadoEventos').append($("</th>"));
-                            $('#listadoEventos').append($('<th>').html("DNI denunciante"));                        
-                            $('#listadoEventos').append($("</th>"));
-                            $('#listadoEventos').append($('<th>').html("Eliminar"));                        
+                            $('#listadoEventos').append($('<th>').html("DNI denunciante"));                                              
                             $('#listadoEventos').append($("</th>"));
                             $('#listadoEventos').append($("</tr>"));
         
@@ -359,8 +348,6 @@
                                 $('#listadoEventos').append($('<th>').html(d.apellidoUsuario));                        
                                 $('#listadoEventos').append($("</th>"));
                                 $('#listadoEventos').append($('<th>').html(d.dniUsuario));                        
-                                $('#listadoEventos').append($("</th>"));
-                                $('#listadoEventos').append($('<th>').append("<button>X").attr("onclick","eliminar(this)").attr("id",d.id));                        
                                 $('#listadoEventos').append($("</th>"));
                                 $('#listadoEventos').append($("</tr>"));
                                 latitudlongitud = {lat: d.latitud, lng: d.longitud};
@@ -418,9 +405,7 @@
                     $('#listadoEventos').append($("</th>"));
                     $('#listadoEventos').append($('<th>').html("Apellido denunciante"));                        
                     $('#listadoEventos').append($("</th>"));
-                    $('#listadoEventos').append($('<th>').html("DNI denunciante"));                        
-                    $('#listadoEventos').append($("</th>"));
-                    $('#listadoEventos').append($('<th>').html("Eliminar"));                        
+                    $('#listadoEventos').append($('<th>').html("DNI denunciante"));                                              
                     $('#listadoEventos').append($("</th>"));
                     $('#listadoEventos').append($("</tr>"));
 
@@ -441,8 +426,6 @@
                         $('#listadoEventos').append($('<th>').html(d.apellidoUsuario));                        
                         $('#listadoEventos').append($("</th>"));
                         $('#listadoEventos').append($('<th>').html(d.dniUsuario));                        
-                        $('#listadoEventos').append($("</th>"));
-                        $('#listadoEventos').append($('<th>').append("<button>X").attr("onclick","eliminar(this)").attr("id",d.id));                        
                         $('#listadoEventos').append($("</th>"));
                         $('#listadoEventos').append($("</tr>"));
                         latitudlongitud = {lat: d.latitud, lng: d.longitud};

@@ -112,7 +112,7 @@
     
     
     </body>
-        <script src="http://127.0.0.1:8000/js/misJSW.js"></script>
+        <script src="http://127.0.0.1:8000/js/misJS.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8Q8AJ_nnQLSQ7prGI-ZoQKuGEzsmsRXU&callback=initMap"></script>
         
 </html>
